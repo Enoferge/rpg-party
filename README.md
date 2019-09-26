@@ -1,4 +1,4 @@
-#Hey!<br>
+## Hey!<br>
 **I'm junior web-developer and right now i'm learning React.js**
 
 This is gonna be a very small one-page application for creating party of heroes like in Might & Magic VI. <br>
