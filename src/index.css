@@ -11,3 +11,57 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+/**********************MAIN CSS**********************/
+.main-layout {
+  width: 80%;
+  min-width: 800px;
+  max-width: 1200px;
+  background: grey;
+  margin: 0 auto;
+  margin-top: 30px;
+}
+
+.main-layout-header, .main-layout-footer {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  font-size: large;
+  text-transform: uppercase;
+  color: #fff;
+  padding: 10px;
+}
+
+.heroes-layout, .options-layout {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+/**********************HEROES CSS**********************/
+.heroes-layout {
+  background: antiquewhite;
+  margin-bottom: 10px;
+}
+
+.hero-block {
+  border: 1px solid #09d3ac;
+  border-radius: 3px;
+  padding: 10px;
+}
+
+.hero-name, .hero-class {
+  display: flex;
+  justify-content: center;
+}
+
+.hero-name {
+  font-weight: bold;
+}
+.hero-class {
+  font-style: italic;
+}
+
+/**********************OPTIONS CSS**********************/
+.options-layout {
+  background: darkcyan;
+}
