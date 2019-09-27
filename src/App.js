@@ -12,18 +12,35 @@ class App extends React.Component {
       heroes: heroesData,
       classes: classesData,
       skills: skillsData,
-      bonusPoints: 50
+      bonusPoints: 50,
+      currentHero: heroesData[0]
     };
+    this.chooseHero = this.chooseHero.bind(this);
+  }
+
+  chooseHero(hero) {
+    console.log("choose hero: " + hero.name);
+    this.setState({
+      currentHero: hero
+    });
   }
 
   render() {
+    let self = this;
     let classItems = this.state.classes.map(function(element, idx) {
-      return <div className="class-item" key={idx}>{element}</div>
+      return <div className={"class-item" + (element.toLowerCase() === self.state.currentHero.class ? ' current-class-item' : '')} key={idx}>{element}</div>
     });
-    let skillItems = this.state.skills.paladin.map(function(element, idx) {
+
+    let skillItems = this.state.skills[this.state.currentHero.class].map(function(element, idx) {
       return <div className="skill-item" key={idx}>{element}</div>
     });
-    console.log("party hero1 " + this.state.heroes.party.hero1);
+
+    let heroItems = this.state.heroes.map(function(hero) {
+      return <Hero
+           onClick={() => self.chooseHero(hero)}
+           data={hero}
+      />
+    });
 
     return (
       <div id="main-layout">
@@ -32,18 +49,7 @@ class App extends React.Component {
         </div>
         <div id="main-layout-content">
           <div className="heroes-layout">
-            <Hero
-                data={this.state.heroes.party.hero1}
-            />
-            <Hero
-                data={this.state.heroes.party.hero2}
-            />
-            <Hero
-                data={this.state.heroes.party.hero3}
-            />
-            <Hero
-                data={this.state.heroes.party.hero4}
-            />
+            { heroItems }
           </div>
         </div>
         <div id="classesBlock">

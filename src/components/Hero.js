@@ -6,10 +6,16 @@ function Hero (props) {
     let heroStats = arr.map(element => {
         return <div className="stat-block" key={element[0]}>{element[0]}: {element[1]}</div>
     });
+
+    function firstLetterUpper(word) {
+        return word[0].toUpperCase() +
+            word.slice(1);
+    }
+
     return (
-        <div className="hero-block">
+        <div className="hero-block" onClick={props.onClick}>
             <div className="hero-name">{ props.data.name }</div>
-            <div className="hero-class">{ props.data.class }</div>
+            <div className="hero-class">{ firstLetterUpper(props.data.class) }</div>
             {heroStats}
         </div>
     )
