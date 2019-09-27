@@ -1,0 +1,49 @@
+.hero-main-info {
+    display: grid;
+    display: grid;
+    grid-template-areas:
+            "portrait controls"
+            "portrait icon"
+            "portrait class "
+            "name name";
+    grid-template-rows: 1fr 3fr 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    background: gold;
+}
+
+.hero-portrait {
+    grid-area: portrait;
+}
+
+.portrait-controls {
+    grid-area: controls;
+    display: flex;
+    flex-direction: row;
+}
+
+.hero-class-icon {
+    grid-area: icon;
+}
+
+.hero-class {
+    grid-area: class;
+}
+
+.hero-name {
+    grid-area: name;
+}
+
+.hero-chars {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.hero-stats, .hero-skills {
+    padding: 10px;
+}
+
+.skill-block {
+    text-align: center;
+}

@@ -62,7 +62,7 @@ code {
 .class-item {
   text-align: center;
 }
-.current-class-item {
+.current-class-item, .chosen-skill {
   font-weight: bold;
 }
 
@@ -98,6 +98,9 @@ code {
 }
 
 .hero-block {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
   border: 1px solid #09d3ac;
   border-radius: 3px;
   padding: 10px;

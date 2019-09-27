@@ -3,7 +3,7 @@ const heroesData = [
         id: 1,
         name: "Родерик",
         portrait: "",
-        class: "paladin",
+        class: "Paladin",
         stats: {
             Might: 14,
             Intellect: 7,
@@ -13,13 +13,13 @@ const heroesData = [
             Speed: 9,
             Luck: 7
         },
-        skills: ["Sword", "Spirit Magic"]
+        skills: ["Sword", "Spirit", "Dagger"]
     },
     {
         id: 2,
         name: "Алексис",
         portrait: "",
-        class: "archer",
+        class: "Archer",
         stats: {
             Might: 9,
             Intellect: 14,
@@ -29,13 +29,13 @@ const heroesData = [
             Speed: 11,
             Luck: 7
         },
-        skills: ["Bow", "Air Magic"]
+        skills: ["Bow", "Air"]
     },
     {
         id: 3,
         name: "Серена",
         portrait: "",
-        class: "cleric",
+        class: "Cleric",
         stats: {
             Might: 7,
             Intellect: 9,
@@ -45,13 +45,13 @@ const heroesData = [
             Speed: 7,
             Luck: 14
         },
-        skills: ["Mace", "Body Magic"]
+        skills: ["Mace", "Body"]
     },
     {
         id: 4,
         name: "Золтан",
         portrait: "",
-        class: "sorcerer",
+        class: "Sorcerer",
         stats: {
             Might: 7,
             Intellect: 14,
@@ -61,7 +61,7 @@ const heroesData = [
             Speed: 14,
             Luck: 11
         },
-        skills: ["Dagger", "Fire Magic"]
+        skills: ["Dagger", "Fire"]
     }
 ];
 

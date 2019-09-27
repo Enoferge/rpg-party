@@ -4,6 +4,7 @@ import Hero from './components/Hero'
 import heroesData from './data/HeroesData'
 import classesData from './data/ClassesData'
 import skillsData from './data/SkillsData'
+import {classLabels, skillLabels} from './data/Labels'
 
 class App extends React.Component {
   constructor() {
@@ -28,17 +29,22 @@ class App extends React.Component {
   render() {
     let self = this;
     let classItems = this.state.classes.map(function(element, idx) {
-      return <div className={"class-item" + (element.toLowerCase() === self.state.currentHero.class ? ' current-class-item' : '')} key={idx}>{element}</div>
+      return <div className={"class-item" + (element === self.state.currentHero.class ? ' current-class-item' : '')} key={idx}>{ classLabels[element] }</div>
     });
 
     let skillItems = this.state.skills[this.state.currentHero.class].map(function(element, idx) {
-      return <div className="skill-item" key={idx}>{element}</div>
+      let isChosen = self.state.currentHero.skills.includes(element);
+      console.log("self.state.currentHero.skills " + self.state.currentHero.skills);
+      console.log(element + "included? " + isChosen);
+      console.log("element " + element);
+      return <div className={"skill-item" + (isChosen ? ' chosen-skill' : '')} key={idx}>{ skillLabels[element] }</div>
     });
 
-    let heroItems = this.state.heroes.map(function(hero) {
+    let heroItems = this.state.heroes.map(function(hero, idx) {
       return <Hero
            onClick={() => self.chooseHero(hero)}
            data={hero}
+           key={idx}
       />
     });
 
