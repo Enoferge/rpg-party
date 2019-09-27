@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: #1f1e1e;
 }
 
 code {
@@ -12,16 +13,29 @@ code {
     monospace;
 }
 /**********************MAIN CSS**********************/
-.main-layout {
+#main-layout {
+  display: grid;
+  grid-template-areas:
+    "header header header"
+    "content content content"
+    "classes skills bonus";
+  grid-template-rows: 40px 3fr 1fr;
+  grid-template-columns: 2fr 3fr 1fr;
+  grid-gap: 10px;
   width: 80%;
   min-width: 800px;
   max-width: 1200px;
   background: grey;
   margin: 0 auto;
   margin-top: 30px;
+  padding: 20px;
 }
 
-.main-layout-header, .main-layout-footer {
+#main-layout-header {
+  grid-area: header;
+}
+
+#main-layout-header {
   display: flex;
   align-content: center;
   justify-content: center;
@@ -31,16 +45,53 @@ code {
   padding: 10px;
 }
 
+#main-layout-content {
+  grid-area: content;
+}
+
+/**********************CLASSES BLOCK CSS**********************/
+#classesBlock {
+  grid-area: classes;
+}
+
+.class-items {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
+}
+.class-item {
+  text-align: center;
+}
+
+/**********************SKILLS BLOCK CSS**********************/
+#skillsBlock {
+  grid-area: skills;
+}
+
+.skill-items {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+}
+.skill-item {
+  text-align: center;
+}
+
+/**********************BONUS BLOCK CSS**********************/
+#bonusBlock {
+  grid-area: bonus;
+}
+
+/**********************HEROES CSS**********************/
 .heroes-layout, .options-layout {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
 }
-
-/**********************HEROES CSS**********************/
 .heroes-layout {
   background: antiquewhite;
   margin-bottom: 10px;
+  height: 100%;
 }
 
 .hero-block {
@@ -48,12 +99,10 @@ code {
   border-radius: 3px;
   padding: 10px;
 }
-
 .hero-name, .hero-class {
   display: flex;
   justify-content: center;
 }
-
 .hero-name {
   font-weight: bold;
 }
@@ -62,6 +111,12 @@ code {
 }
 
 /**********************OPTIONS CSS**********************/
-.options-layout {
+#classesBlock, #skillsBlock, #bonusBlock {
   background: darkcyan;
+  padding: 10px;
+}
+.block-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

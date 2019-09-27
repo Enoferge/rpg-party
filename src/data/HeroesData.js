@@ -60,17 +60,7 @@ const heroesData = {
             },
             skills: ["Dagger", "Fire Magic"]
         }
-    },
-    skills: {
-        paladin: [],
-        knight: [],
-        cleric: [],
-        archer: [],
-        sorcerer: [],
-        druid: []
-    },
-    classes: ["Paladin", "Knight", "Cleric", "Archer", "Sorcerer", "Druid"],
-    bonusPoints: 50
+    }
 };
 
 export default heroesData
