@@ -1,21 +1,27 @@
 import React from 'react'
 import '../style/hero.css';
 import {classLabels, skillLabels, statLabels} from '../data/Labels'
-import icon from '../images/ArcherMM6_icon.png';
 
 function Hero (props) {
     console.log("props: " + props.data.stats);
+    function removeSkill(event, element) {
+        event.stopPropagation();
+        props.removeSkill(element)
+    }
+
     let arrStats = Object.entries(props.data.stats);
     let arrSkills = props.data.skills;
     let heroStats = arrStats.map(element => {
         return <div className="stat-block" key={element[0]}>{statLabels[element[0]]}: {element[1]}</div>
     });
 
-    let heroSkills = arrSkills.map(element => {
-        return <div className="skill-block" key={element}>{ skillLabels[element] }</div>
+    let heroSkills = arrSkills.map((element, idx) => {
+        return <div className={"skill-block" + (idx > 1 ? ' extra-skill' : '')} key={idx} onClick={(e) => removeSkill(e, element)} >{ skillLabels[element] }</div>
     });
-
-    let heroIcon = '';
+    let emptySkills = [];
+    for (let i = 0; i < 4 - arrSkills.length; i++) {
+        emptySkills.push(<div className="skill-block">Нет</div> )
+    }
 
     return (
         <div className="hero-block" onClick={props.onClick}>
@@ -26,7 +32,7 @@ function Hero (props) {
                     <div className="portrait-control-next">next</div>
                 </div>
                 <div className="hero-class-icon">
-                    <img src={icon} alt={props.data.class}/>
+                    <img src={require(`../images/${props.data.class}MM6_icon.png`)} alt={props.data.class} width="80%"/>
                 </div>
                 <div className="hero-class">{ classLabels[props.data.class] }</div>
                 <div className="hero-name">{ props.data.name }</div>
@@ -38,6 +44,7 @@ function Hero (props) {
                 <div className="hero-skills">
                     <div className="block-header">Навыки</div>
                     {heroSkills}
+                    {emptySkills}
                 </div>
             </div>
         </div>

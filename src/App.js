@@ -17,6 +17,8 @@ class App extends React.Component {
       currentHero: heroesData[0]
     };
     this.chooseHero = this.chooseHero.bind(this);
+    this.chooseSkill = this.chooseSkill.bind(this);
+    this.removeSkill = this.removeSkill.bind(this);
   }
 
   chooseHero(hero) {
@@ -26,23 +28,52 @@ class App extends React.Component {
     });
   }
 
+  chooseSkill(skill) {
+    console.log("choose skill: " + skill);
+    this.setState(prev => {
+      let newData = prev.currentHero;
+      if (!newData.skills.includes(skill) && newData.skills.length < 4)
+        newData.skills.push(skill);
+      return {
+        currentHero: newData
+      }
+    })
+  }
+
+  removeSkill(skill) {
+    console.log("remove Skill: " + skill);
+    this.setState(prev => {
+      let newData = prev.currentHero;
+      for (let i = 0; i < newData.skills.length; i++) {
+        if (newData.skills[i] === skill) {
+          newData.skills.splice(i, 1)
+        }
+      }
+      return {
+        currentHero: newData
+      }
+    })
+  }
+
   render() {
     let self = this;
     let classItems = this.state.classes.map(function(element, idx) {
       return <div className={"class-item" + (element === self.state.currentHero.class ? ' current-class-item' : '')} key={idx}>{ classLabels[element] }</div>
     });
 
+    console.log("hero item " + this.state.currentHero);
     let skillItems = this.state.skills[this.state.currentHero.class].map(function(element, idx) {
       let isChosen = self.state.currentHero.skills.includes(element);
       console.log("self.state.currentHero.skills " + self.state.currentHero.skills);
       console.log(element + "included? " + isChosen);
       console.log("element " + element);
-      return <div className={"skill-item" + (isChosen ? ' chosen-skill' : '')} key={idx}>{ skillLabels[element] }</div>
+      return <div className={"skill-item" + (isChosen ? ' chosen-skill' : '')} key={idx} onClick={() => self.chooseSkill(element)}>{ skillLabels[element] }</div>
     });
 
     let heroItems = this.state.heroes.map(function(hero, idx) {
       return <Hero
            onClick={() => self.chooseHero(hero)}
+           removeSkill={ self.removeSkill }
            data={hero}
            key={idx}
       />
