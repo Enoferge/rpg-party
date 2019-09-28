@@ -3,7 +3,7 @@ import './App.css';
 import Hero from './components/Hero'
 import heroesData from './data/HeroesData'
 import classesData from './data/ClassesData'
-import skillsData from './data/SkillsData'
+import {skills, baseSkills } from "./data/SkillsData"
 import {classLabels, skillLabels} from './data/Labels'
 
 class App extends React.Component {
@@ -12,67 +12,91 @@ class App extends React.Component {
     this.state = {
       heroes: heroesData,
       classes: classesData,
-      skills: skillsData,
+      skills: skills,
       bonusPoints: 50,
-      currentHero: heroesData[0]
+      currentId: 0
     };
+
     this.chooseHero = this.chooseHero.bind(this);
     this.chooseSkill = this.chooseSkill.bind(this);
     this.removeSkill = this.removeSkill.bind(this);
+    this.chooseClass = this.chooseClass.bind(this);
+    this.showInfo = this.showInfo.bind(this);
   }
 
-  chooseHero(hero) {
-    console.log("choose hero: " + hero.name);
+  showInfo() {
+      console.log("show current hero class:  " + this.state.heroes[this.state.currentId].class);
+  }
+
+  chooseHero(idx) {
     this.setState({
-      currentHero: hero
+      currentId: idx
     });
+  }
+
+  chooseClass(className) {
+      console.log("choose className: " + className);
+      this.setState(prev => {
+          let currentHero = prev.heroes[prev.currentId];
+          let updatedHeroes = prev.heroes;
+          if (currentHero.class !== className) {
+              currentHero.class = className;
+              currentHero.skills = [...baseSkills[className]]
+          }
+          updatedHeroes[prev.currentId] = currentHero;
+          return {
+              heroes: updatedHeroes
+          }
+      })
   }
 
   chooseSkill(skill) {
     console.log("choose skill: " + skill);
     this.setState(prev => {
-      let newData = prev.currentHero;
-      if (!newData.skills.includes(skill) && newData.skills.length < 4)
-        newData.skills.push(skill);
-      return {
-        currentHero: newData
-      }
+        let currentHero = prev.heroes[prev.currentId];
+        let updatedHeroes = prev.heroes;
+        if (!currentHero.skills.includes(skill) && currentHero.skills.length < 4)
+            currentHero.skills.push(skill);
+        updatedHeroes[prev.currentId] = currentHero;
+        return {
+          heroes: updatedHeroes
+        }
     })
   }
 
   removeSkill(skill) {
     console.log("remove Skill: " + skill);
     this.setState(prev => {
-      let newData = prev.currentHero;
-      for (let i = 0; i < newData.skills.length; i++) {
-        if (newData.skills[i] === skill) {
-          newData.skills.splice(i, 1)
+        let currentHero = prev.heroes[prev.currentId];
+        let updatedHeroes = prev.heroes;
+        for (let i = 0; i < currentHero.skills.length; i++) {
+            if (currentHero.skills[i] === skill) {
+            currentHero.skills.splice(i, 1)
+            }
         }
-      }
-      return {
-        currentHero: newData
-      }
+        updatedHeroes[prev.currentId] = currentHero;
+        return {
+            heroes: updatedHeroes
+        }
     })
   }
 
   render() {
     let self = this;
+    const currentHero = self.state.heroes[self.state.currentId]
     let classItems = this.state.classes.map(function(element, idx) {
-      return <div className={"class-item" + (element === self.state.currentHero.class ? ' current-class-item' : '')} key={idx}>{ classLabels[element] }</div>
+        return <div className={"class-item" + (element === currentHero.class ? ' current-class-item' : '')} key={idx}><span onClick={() => self.chooseClass(element)}>{ classLabels[element] }</span></div>
     });
 
-    console.log("hero item " + this.state.currentHero);
-    let skillItems = this.state.skills[this.state.currentHero.class].map(function(element, idx) {
-      let isChosen = self.state.currentHero.skills.includes(element);
-      console.log("self.state.currentHero.skills " + self.state.currentHero.skills);
-      console.log(element + "included? " + isChosen);
-      console.log("element " + element);
-      return <div className={"skill-item" + (isChosen ? ' chosen-skill' : '')} key={idx} onClick={() => self.chooseSkill(element)}>{ skillLabels[element] }</div>
+    console.log("hero item " + currentHero);
+    let skillItems = this.state.skills[currentHero.class].map(function(element, idx) {
+      let isChosen = currentHero.skills.includes(element);
+        return <div className={"skill-item" + (isChosen ? ' chosen-skill' : '')} key={idx}><span onClick={() => self.chooseSkill(element)}>{ skillLabels[element] }</span></div>
     });
 
     let heroItems = this.state.heroes.map(function(hero, idx) {
       return <Hero
-           onClick={() => self.chooseHero(hero)}
+           onClick={() => self.chooseHero(idx)}
            removeSkill={ self.removeSkill }
            data={hero}
            key={idx}
@@ -103,8 +127,8 @@ class App extends React.Component {
         </div>
         <div id="bonusBlock">
           <div className="block-header">Бонусные очки</div>
-          <div>{ this.state.bonusPoints }</div>
-          <button>Готово</button>
+          <div className="bonus-points">{ this.state.bonusPoints }</div>
+          <button onClick={self.showInfo}>Готово</button>
         </div>
       </div>
     );

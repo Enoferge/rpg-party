@@ -62,6 +62,9 @@ code {
 .class-item {
   text-align: center;
 }
+.class-item span {
+  cursor: pointer;
+}
 .current-class-item, .chosen-skill {
   font-weight: bold;
 }
@@ -79,10 +82,19 @@ code {
 .skill-item {
   text-align: center;
 }
-
+.skill-item span {
+  cursor: pointer;
+}
 /**********************BONUS BLOCK CSS**********************/
 #bonusBlock {
   grid-area: bonus;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.bonus-points {
+  display: flex;
+  justify-content: center;
 }
 
 /**********************HEROES CSS**********************/

@@ -13,7 +13,7 @@ const heroesData = [
             Speed: 9,
             Luck: 7
         },
-        skills: ["Sword", "Spirit", "Dagger"]
+        skills: ["Sword", "Spirit"]
     },
     {
         id: 2,

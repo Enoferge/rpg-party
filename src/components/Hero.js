@@ -12,15 +12,15 @@ function Hero (props) {
     let arrStats = Object.entries(props.data.stats);
     let arrSkills = props.data.skills;
     let heroStats = arrStats.map(element => {
-        return <div className="stat-block" key={element[0]}>{statLabels[element[0]]}: {element[1]}</div>
+        return <div className="stat-block" key={element[0]}><span>{statLabels[element[0]]}:</span> <span>{element[1]}</span></div>
     });
 
     let heroSkills = arrSkills.map((element, idx) => {
-        return <div className={"skill-block" + (idx > 1 ? ' extra-skill' : '')} key={idx} onClick={(e) => removeSkill(e, element)} >{ skillLabels[element] }</div>
+        return <div className={"skill-block" + (idx > 1 ? ' extra-skill' : '')} key={idx}><span onClick={(e) => removeSkill(e, element)}>{ skillLabels[element] }</span></div>
     });
     let emptySkills = [];
     for (let i = 0; i < 4 - arrSkills.length; i++) {
-        emptySkills.push(<div className="skill-block">Нет</div> )
+        emptySkills.push(<div className="skill-block" key={i}>Нет</div> )
     }
 
     return (

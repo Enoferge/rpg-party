@@ -18,6 +18,10 @@
     grid-area: controls;
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+}
+.portrait-control-prev, .portrait-control-next {
+    cursor: pointer;
 }
 
 .hero-class-icon {
@@ -45,9 +49,17 @@
     padding: 10px;
 }
 
+.stat-block {
+    display: flex;
+    justify-content: space-between;
+}
+
 .skill-block {
     text-align: center;
 }
 .extra-skill {
     color: aqua;
+}
+.extra-skill span {
+    cursor: pointer;
 }
