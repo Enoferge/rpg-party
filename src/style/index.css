@@ -52,6 +52,53 @@ code {
   grid-area: content;
 }
 
+#classesBlock, #skillsBlock, #bonusBlock, .hero-block {
+  padding: 10px;
+  border: 5px solid #a59894;
+}
+
+.block-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #f1c169;
+}
+
+.btn-img {
+  max-width: 100%;
+  min-width: 60%;
+  height: auto;
+  align-self: center;
+  cursor: pointer;
+}
+
+/**********************HEROES CSS**********************/
+.heroes-layout {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-bottom: 10px;
+  height: 100%;
+}
+
+.hero-block {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 3px;
+  padding: 10px;
+}
+.hero-name, .hero-class {
+  display: flex;
+  justify-content: center;
+}
+.hero-name {
+  font-weight: bold;
+}
+.hero-class {
+  font-style: italic;
+}
+
 /**********************CLASSES BLOCK CSS**********************/
 #classesBlock {
   grid-area: classes;
@@ -69,7 +116,7 @@ code {
   cursor: pointer;
 }
 .current-class-item, .chosen-skill {
-  font-weight: bold;
+  color: aqua;
 }
 
 /**********************SKILLS BLOCK CSS**********************/
@@ -88,6 +135,7 @@ code {
 .skill-item span {
   cursor: pointer;
 }
+
 /**********************BONUS BLOCK CSS**********************/
 #bonusBlock {
   grid-area: bonus;
@@ -99,54 +147,13 @@ code {
   display: flex;
   justify-content: center;
 }
-
-/**********************HEROES CSS**********************/
-.heroes-layout, .options-layout {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-}
-.heroes-layout {
-  /*background: antiquewhite;*/
-  margin-bottom: 10px;
-  height: 100%;
-}
-
-.hero-block {
-  width: 20%;
-  display: flex;
-  flex-direction: column;
-  border: 1px solid #09d3ac;
-  border-radius: 3px;
-  padding: 10px;
-}
-.hero-name, .hero-class {
-  display: flex;
-  justify-content: center;
-}
-.hero-name {
-  font-weight: bold;
-}
-.hero-class {
-  font-style: italic;
+.btn-block {
+  text-align: center;
 }
 
 /**********************OPTIONS CSS**********************/
-#classesBlock, #skillsBlock, #bonusBlock {
-  /*background: darkcyan;*/
-  padding: 10px;
-}
-.block-header {
+.options-layout {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  color: gold;
-}
-
-.btn-img {
-  max-width: 100%;
-  min-width: 50%;
-  height: auto;
-  align-self: center;
-  cursor: pointer;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }

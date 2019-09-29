@@ -33,6 +33,11 @@
 }
 .portrait-control-prev, .portrait-control-next {
     cursor: pointer;
+    width:50%;
+}
+
+.btn-img.portrait-control-btn {
+    width: 100%;
 }
 
 .hero-class-icon {

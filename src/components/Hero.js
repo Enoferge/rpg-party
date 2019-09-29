@@ -4,9 +4,10 @@ import {classLabels, skillLabels, statLabels} from '../data/Labels'
 
 function Hero (props) {
     console.log("props: " + props.data.stats);
-    function removeSkill(event, element) {
+    function removeSkill(event, element, idx) {
         event.stopPropagation();
-        props.removeSkill(element)
+        if (idx > 1)
+            props.removeSkill(element);
     }
 
     let arrStats = Object.entries(props.data.stats);
@@ -16,22 +17,26 @@ function Hero (props) {
     });
 
     let heroSkills = arrSkills.map((element, idx) => {
-        return <div className={"skill-block" + (idx > 1 ? ' extra-skill' : '')} key={idx}><span onClick={(e) => removeSkill(e, element)}>{ skillLabels[element] }</span></div>
+        return <div className={"skill-block" + (idx > 1 ? ' extra-skill' : '')} key={idx}><span onClick={(e) => removeSkill(e, element, idx)}>{ skillLabels[element] }</span></div>
     });
     let emptySkills = [];
     for (let i = 0; i < 4 - arrSkills.length; i++) {
-        emptySkills.push(<div className="skill-block" key={i}>Нет</div> )
+        emptySkills.push(<div className="skill-block extra-skill" key={i}>Нет</div> )
     }
 
     return (
         <div className="hero-block" onClick={props.onClick}>
             <div className="hero-main-info">
                 <div className="hero-portrait">
-                    <img className="hero-portrait-img" src={require(`../images/MaleA01.png`)} alt={props.data.class} width="80%"/>
+                    <img className="hero-portrait-img" src={require(`../images/MaleA01.png`)} alt="portrait" width="80%"/>
                 </div>
                 <div className="portrait-controls">
-                    <div className="portrait-control-prev">prev</div>
-                    <div className="portrait-control-next">next</div>
+                    <div className="portrait-control-prev">
+                        <img className="btn-img portrait-control-btn" src={require(`../images/BtnArrowLeft.png`)} alt="previous" width="80%"/>
+                    </div>
+                    <div className="portrait-control-next">
+                        <img className="btn-img portrait-control-btn" src={require(`../images/BtnArrowRight.png`)} alt="next" width="80%"/>
+                    </div>
                 </div>
                 <div className="hero-class-icon">
                     <img className="hero-class-icon-img" src={require(`../images/${props.data.class}MM6_icon.png`)} alt={props.data.class} width="80%"/>
