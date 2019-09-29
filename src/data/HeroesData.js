@@ -2,7 +2,7 @@ const heroesData = [
     {
         id: 1,
         name: "Родерик",
-        portrait: "",
+        portrait: 1,
         class: "Paladin",
         stats: {
             Might: 14,
@@ -18,7 +18,7 @@ const heroesData = [
     {
         id: 2,
         name: "Алексис",
-        portrait: "",
+        portrait: 2,
         class: "Archer",
         stats: {
             Might: 9,
@@ -34,7 +34,7 @@ const heroesData = [
     {
         id: 3,
         name: "Серена",
-        portrait: "",
+        portrait: 10,
         class: "Cleric",
         stats: {
             Might: 7,
@@ -50,7 +50,7 @@ const heroesData = [
     {
         id: 4,
         name: "Золтан",
-        portrait: "",
+        portrait: 4,
         class: "Sorcerer",
         stats: {
             Might: 7,

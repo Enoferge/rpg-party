@@ -1,6 +1,8 @@
 import React from 'react'
 import '../style/hero.css';
-import {classLabels, skillLabels, statLabels} from '../data/Labels'
+import { skillLabels, statLabels } from '../data/Labels'
+
+import HeroMainInfoBlock from "./HeroMainInfoBlock";
 
 function Hero (props) {
     console.log("props: " + props.data.stats);
@@ -26,24 +28,11 @@ function Hero (props) {
 
     return (
         <div className="hero-block" onClick={props.onClick}>
-            <div className="hero-main-info">
-                <div className="hero-portrait">
-                    <img className="hero-portrait-img" src={require(`../images/MaleA01.png`)} alt="portrait" width="80%"/>
-                </div>
-                <div className="portrait-controls">
-                    <div className="portrait-control-prev">
-                        <img className="btn-img portrait-control-btn" src={require(`../images/BtnArrowLeft.png`)} alt="previous" width="80%"/>
-                    </div>
-                    <div className="portrait-control-next">
-                        <img className="btn-img portrait-control-btn" src={require(`../images/BtnArrowRight.png`)} alt="next" width="80%"/>
-                    </div>
-                </div>
-                <div className="hero-class-icon">
-                    <img className="hero-class-icon-img" src={require(`../images/${props.data.class}MM6_icon.png`)} alt={props.data.class} width="80%"/>
-                </div>
-                <div className="hero-class">{ classLabels[props.data.class] }</div>
-                <div className="hero-name">{ props.data.name }</div>
-            </div>
+            <HeroMainInfoBlock
+                data={props.data}
+                changeData={props.changeData}
+                currentPortrait={props.data.portrait}
+            />
             <div className="hero-chars">
                 <div className="hero-stats">
                     {heroStats}

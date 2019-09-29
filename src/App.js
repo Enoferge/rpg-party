@@ -22,6 +22,7 @@ class App extends React.Component {
     this.removeSkill = this.removeSkill.bind(this);
     this.chooseClass = this.chooseClass.bind(this);
     this.showInfo = this.showInfo.bind(this);
+    this.changeData = this.changeData.bind(this);
   }
 
   showInfo() {
@@ -81,6 +82,19 @@ class App extends React.Component {
     })
   }
 
+  changeData(portrait) {
+      console.log("changeData: " + portrait);
+      this.setState(prev => {
+          let currentHero = prev.heroes[prev.currentId];
+          let updatedHeroes = prev.heroes;
+          currentHero.portrait = portrait;
+          updatedHeroes[prev.currentId] = currentHero;
+          return {
+              heroes: updatedHeroes
+          }
+      })
+  }
+
   render() {
     let self = this;
     const currentHero = self.state.heroes[self.state.currentId]
@@ -99,6 +113,7 @@ class App extends React.Component {
            onClick={() => self.chooseHero(idx)}
            removeSkill={ self.removeSkill }
            data={hero}
+           changeData={self.changeData}
            key={idx}
       />
     });
@@ -130,7 +145,7 @@ class App extends React.Component {
             <div className="bonus-points">{ this.state.bonusPoints }</div>
 {/*          <button onClick={self.showInfo}>Готово</button>*/}
             <div className="btn-block">
-                <img className="btn-img" src={require("./images/BtnYes.png")}/>
+                <img className="btn-img" src={require("./images/BtnYes.png")} alt="create party"/>
             </div>
         </div>
       </div>
