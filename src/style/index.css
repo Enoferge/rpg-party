@@ -6,6 +6,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: #1f1e1e;
+  color: #fff;
 }
 
 code {
@@ -26,7 +27,9 @@ code {
   width: 80%;
   min-width: 800px;
   max-width: 1200px;
-  background: grey;
+  /*background: grey;*/
+  background-image: url('../images/bg-layout-1.png');
+  background-size: cover;
   margin: 20px auto;
   padding: 20px;
 }
@@ -104,7 +107,7 @@ code {
   justify-content: space-around;
 }
 .heroes-layout {
-  background: antiquewhite;
+  /*background: antiquewhite;*/
   margin-bottom: 10px;
   height: 100%;
 }
@@ -130,11 +133,20 @@ code {
 
 /**********************OPTIONS CSS**********************/
 #classesBlock, #skillsBlock, #bonusBlock {
-  background: darkcyan;
+  /*background: darkcyan;*/
   padding: 10px;
 }
 .block-header {
   display: flex;
   justify-content: center;
   align-items: center;
+  color: gold;
+}
+
+.btn-img {
+  max-width: 100%;
+  min-width: 50%;
+  height: auto;
+  align-self: center;
+  cursor: pointer;
 }

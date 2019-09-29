@@ -26,13 +26,15 @@ function Hero (props) {
     return (
         <div className="hero-block" onClick={props.onClick}>
             <div className="hero-main-info">
-                <div className="hero-portrait">portrait</div>
+                <div className="hero-portrait">
+                    <img className="hero-portrait-img" src={require(`../images/MaleA01.png`)} alt={props.data.class} width="80%"/>
+                </div>
                 <div className="portrait-controls">
                     <div className="portrait-control-prev">prev</div>
                     <div className="portrait-control-next">next</div>
                 </div>
                 <div className="hero-class-icon">
-                    <img src={require(`../images/${props.data.class}MM6_icon.png`)} alt={props.data.class} width="80%"/>
+                    <img className="hero-class-icon-img" src={require(`../images/${props.data.class}MM6_icon.png`)} alt={props.data.class} width="80%"/>
                 </div>
                 <div className="hero-class">{ classLabels[props.data.class] }</div>
                 <div className="hero-name">{ props.data.name }</div>

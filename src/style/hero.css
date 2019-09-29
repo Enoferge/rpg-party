@@ -7,11 +7,22 @@
             "name name";
     grid-template-rows: 1fr 3fr 1fr 1fr;
     grid-template-columns: repeat(2, 1fr);
-    background: gold;
+/*    background: gold;*/
+}
+
+.hero-block {
+    color: #fff;
 }
 
 .hero-portrait {
     grid-area: portrait;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-portrait-img {
+    width: 100%;
+    align-self: center;
 }
 
 .portrait-controls {
@@ -28,6 +39,12 @@
     grid-area: icon;
     display: flex;
     justify-content: center;
+}
+
+.hero-class-icon-img {
+    border: 2px solid #a59894;
+    width: 50%;
+    align-self: center;
 }
 
 .hero-class {

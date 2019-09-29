@@ -128,7 +128,8 @@ class App extends React.Component {
         <div id="bonusBlock">
           <div className="block-header">Бонусные очки</div>
           <div className="bonus-points">{ this.state.bonusPoints }</div>
-          <button onClick={self.showInfo}>Готово</button>
+{/*          <button onClick={self.showInfo}>Готово</button>*/}
+            <img className="btn-img" src={require("./images/BtnYes.png")}/>
         </div>
       </div>
     );
