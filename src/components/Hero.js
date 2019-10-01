@@ -15,7 +15,11 @@ function Hero (props) {
     let arrStats = Object.entries(props.data.stats);
     let arrSkills = props.data.skills;
     let heroStats = arrStats.map(element => {
-        return <div className="stat-block" key={element[0]}><span>{statLabels[element[0]]}:</span> <span>{element[1]}</span></div>
+        return <div className="stat-block" key={element[0]}>
+            <img className="btn-img stat-img" src={require(`../images/StatArrowLeft.png`)} alt="previous" width="50%"/>
+            <span>{statLabels[element[0]]}:</span> <span>{element[1]}</span>
+            <img className="btn-img stat-img" src={require(`../images/StatArrowRight.png`)} alt="previous" width="50%"/>
+        </div>
     });
 
     let heroSkills = arrSkills.map((element, idx) => {

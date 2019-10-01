@@ -68,12 +68,13 @@
 }
 
 .hero-stats, .hero-skills {
-    padding: 10px;
+    padding: 10px 0;
 }
 
 .stat-block {
     display: flex;
     justify-content: space-between;
+    margin: 6px auto;
 }
 
 .skill-block {

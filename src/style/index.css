@@ -72,6 +72,11 @@ code {
   cursor: pointer;
 }
 
+.btn-img.stat-img {
+  width: 12%;
+  min-width: 0;
+}
+
 /**********************HEROES CSS**********************/
 .heroes-layout {
   display: flex;
