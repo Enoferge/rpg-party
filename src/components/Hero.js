@@ -12,13 +12,19 @@ function Hero (props) {
             props.removeSkill(element);
     }
 
+    function increaseStat(event, element) {
+        event.stopPropagation();
+        props.increaseStat(element);
+    }
+
+
     let arrStats = Object.entries(props.data.stats);
     let arrSkills = props.data.skills;
     let heroStats = arrStats.map(element => {
         return <div className="stat-block" key={element[0]}>
-            <img className="btn-img stat-img" src={require(`../images/StatArrowLeft.png`)} alt="previous" width="50%"/>
+            <img className="btn-img stat-img" src={require(`../images/StatArrowLeft.png`)} alt="previous" width="50%" onClick={props.decreaseStat(element)}/>
             <span>{statLabels[element[0]]}:</span> <span>{element[1]}</span>
-            <img className="btn-img stat-img" src={require(`../images/StatArrowRight.png`)} alt="previous" width="50%"/>
+            <img className="btn-img stat-img" src={require(`../images/StatArrowRight.png`)} alt="previous" width="50%" onClick={(e) => increaseStat(e, element)}/>
         </div>
     });
 

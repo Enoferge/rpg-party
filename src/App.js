@@ -23,6 +23,8 @@ class App extends React.Component {
     this.chooseClass = this.chooseClass.bind(this);
     this.showInfo = this.showInfo.bind(this);
     this.changeData = this.changeData.bind(this);
+    this.increaseStat = this.increaseStat.bind(this);
+    this.decreaseStat = this.decreaseStat.bind(this);
   }
 
   showInfo() {
@@ -95,6 +97,27 @@ class App extends React.Component {
       })
   }
 
+  increaseStat(stat) {
+      if (this.state.bonusPoints > 0) {
+        this.setState(prev => {
+            let currentHero = prev.heroes[prev.currentId];
+            let updatedHeroes = prev.heroes;
+            currentHero.stats[stat[0]] += 1;
+            updatedHeroes[prev.currentId] = currentHero;
+            return {
+                heroes: updatedHeroes,
+                bonusPoints: prev.bonusPoints - 1
+            }
+        })
+      }
+  }
+
+    decreaseStat(stat) {
+        if (this.state.bonusPoints > 0) {
+
+        }
+    }
+
   render() {
     let self = this;
     const currentHero = self.state.heroes[self.state.currentId]
@@ -111,8 +134,10 @@ class App extends React.Component {
     let heroItems = this.state.heroes.map(function(hero, idx) {
       return <Hero
            onClick={() => self.chooseHero(idx)}
-           removeSkill={ self.removeSkill }
            data={hero}
+           removeSkill={ self.removeSkill }
+           increaseStat={ self.increaseStat }
+           decreaseStat={ self.decreaseStat }
            changeData={self.changeData}
            key={idx}
       />
