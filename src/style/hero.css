@@ -60,6 +60,14 @@
     grid-area: name;
 }
 
+.name-input {
+    background: none;
+    font-size: large;
+    color: aqua;
+    font-family: "Kelvinch";
+    text-align: center;
+}
+
 .hero-chars {
     height: 100%;
     display: flex;

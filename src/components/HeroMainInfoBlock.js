@@ -52,7 +52,15 @@ class HeroMainInfoBlock extends Component {
                     <img className="hero-class-icon-img" src={require(`../images/${this.state.hero.class}MM6_icon.png`)} alt={this.state.hero.class} width="80%"/>
                 </div>
                 <div className="hero-class">{ classLabels[this.state.hero.class] }</div>
-                <div className="hero-name">{ this.state.hero.name }</div>
+{/*                <div className="hero-name">{ this.state.hero.name }</div>*/}
+                <div className="hero-name">
+                    <input
+                        className='name-input'
+                        defaultValue={this.state.hero.name}
+                        placeholder='Имя'
+                        ref='nameInput'
+                    />
+                </div>
             </div>
         );
     }
