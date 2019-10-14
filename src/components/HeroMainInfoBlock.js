@@ -38,7 +38,7 @@ class HeroMainInfoBlock extends Component {
         return (
             <div className="hero-main-info">
                 <div className="hero-portrait">
-                    <img className="hero-portrait-img" src={this.state.portraits[this.state.currentPortraitIndex].image} alt="portrait" width="80%"/>
+                    <img className="hero-portrait-img" onClick={this.props.chooseHero} src={this.state.portraits[this.state.currentPortraitIndex].image} alt="portrait" width="80%"/>
                 </div>
                 <div className="portrait-controls">
                     <div className="portrait-control-prev" onClick={(e) => this.choosePrevPortrait(e)}>

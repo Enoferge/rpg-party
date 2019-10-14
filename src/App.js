@@ -4,6 +4,7 @@ import Hero from './components/Hero'
 import heroesData from './data/HeroesData'
 import classesData from './data/ClassesData'
 import {skills, baseSkills } from "./data/SkillsData"
+import baseStats from "./data/StatsData"
 import {classLabels, skillLabels} from './data/Labels'
 
 class App extends React.Component {
@@ -11,6 +12,7 @@ class App extends React.Component {
     super();
     this.state = {
       heroes: heroesData,
+      heroesBuffer: [...heroesData],
       classes: classesData,
       skills: skills,
       bonusPoints: 50,
@@ -25,6 +27,7 @@ class App extends React.Component {
     this.changeData = this.changeData.bind(this);
     this.increaseStat = this.increaseStat.bind(this);
     this.decreaseStat = this.decreaseStat.bind(this);
+    this.createParty = this.createParty.bind(this);
   }
 
   showInfo() {
@@ -44,7 +47,8 @@ class App extends React.Component {
           let updatedHeroes = prev.heroes;
           if (currentHero.class !== className) {
               currentHero.class = className;
-              currentHero.skills = [...baseSkills[className]]
+              currentHero.skills = [...baseSkills[className]];
+              currentHero.stats = Object.assign({}, baseStats[className]);
           }
           updatedHeroes[prev.currentId] = currentHero;
           return {
@@ -98,6 +102,7 @@ class App extends React.Component {
   }
 
   increaseStat(stat) {
+      console.log("stat[0[] " + JSON.stringify(stat));
       if (this.state.bonusPoints > 0) {
         this.setState(prev => {
             let currentHero = prev.heroes[prev.currentId];
@@ -113,9 +118,28 @@ class App extends React.Component {
   }
 
     decreaseStat(stat) {
-        if (this.state.bonusPoints > 0) {
+        console.log("app dec");
+        this.setState(prev => {
+            let currentHero = prev.heroes[prev.currentId];
+            let updatedHeroes = prev.heroes;
+            let updatedBonus = prev.bonusPoints;
+            if (currentHero.stats[stat[0]] > 0) {
+                currentHero.stats[stat[0]] -= 1;
+                updatedBonus += 1;
+            }
+            updatedHeroes[prev.currentId] = currentHero;
+            return {
+                heroes: updatedHeroes,
+                bonusPoints: updatedBonus
+            }
+        })
+    }
 
-        }
+    createParty() {
+      console.log("ОТРЯД СОЗДАН");
+      for (let i = 0; i < this.state.heroes.length; i++) {
+          console.log(JSON.stringify(this.state.heroes[i]));
+      }
     }
 
   render() {
@@ -133,7 +157,8 @@ class App extends React.Component {
 
     let heroItems = this.state.heroes.map(function(hero, idx) {
       return <Hero
-           onClick={() => self.chooseHero(idx)}
+           chooseHero={() => self.chooseHero(idx)}
+           currentId={self.state.currentId}
            data={hero}
            removeSkill={ self.removeSkill }
            increaseStat={ self.increaseStat }
@@ -167,10 +192,12 @@ class App extends React.Component {
         </div>
         <div id="bonusBlock">
             <div className="block-header">Бонусные очки</div>
-            <div className="bonus-points">{ this.state.bonusPoints }</div>
-{/*          <button onClick={self.showInfo}>Готово</button>*/}
-            <div className="btn-block">
-                <img className="btn-img" src={require("./images/BtnYes.png")} alt="create party"/>
+            <div className="bonus-info">
+                <div className="bonus-points">{ this.state.bonusPoints }</div>
+    {/*          <button onClick={self.showInfo}>Готово</button>*/}
+                <div className="btn-block">
+                    <img className="btn-img" src={require("./images/BtnYes.png")} onClick={() => this.createParty()} alt="Создать отряд"/>
+                </div>
             </div>
         </div>
       </div>

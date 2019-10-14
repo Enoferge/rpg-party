@@ -74,11 +74,20 @@
 .stat-block {
     display: flex;
     justify-content: space-between;
-    margin: 6px auto;
+    margin: 10px auto;
+}
+
+.increased-stat {
+    color: #54A259;
+}
+
+.decreased-stat {
+    color: #A83C27;
 }
 
 .skill-block {
     text-align: center;
+    margin: 6px auto;
 }
 .extra-skill {
     color: aqua;
