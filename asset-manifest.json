@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/rpg-party/static/css/main.8e9ad639.chunk.css",
+    "main.js": "/rpg-party/static/js/main.4b0afbb7.chunk.js",
+    "main.js.map": "/rpg-party/static/js/main.4b0afbb7.chunk.js.map",
+    "runtime-main.js": "/rpg-party/static/js/runtime-main.57f54270.js",
+    "runtime-main.js.map": "/rpg-party/static/js/runtime-main.57f54270.js.map",
+    "static/js/2.eea72079.chunk.js": "/rpg-party/static/js/2.eea72079.chunk.js",
+    "static/js/2.eea72079.chunk.js.map": "/rpg-party/static/js/2.eea72079.chunk.js.map",
+    "index.html": "/rpg-party/index.html",
+    "precache-manifest.07d7948b18ae6ed027b1f2a2c46790a8.js": "/rpg-party/precache-manifest.07d7948b18ae6ed027b1f2a2c46790a8.js",
+    "service-worker.js": "/rpg-party/service-worker.js",
+    "static/css/main.8e9ad639.chunk.css.map": "/rpg-party/static/css/main.8e9ad639.chunk.css.map",
+    "static/media/GirlA01.png": "/rpg-party/static/media/GirlA01.8e1c5c9f.png",
+    "static/media/GirlB01.png": "/rpg-party/static/media/GirlB01.0fe5c5a7.png",
+    "static/media/GirlC01.png": "/rpg-party/static/media/GirlC01.f33bb42b.png",
+    "static/media/GirlD01.png": "/rpg-party/static/media/GirlD01.ee248871.png",
+    "static/media/index.css": "/rpg-party/static/media/bg-layout-1.e99efff4.png",
+    "static/media/MaleA01.png": "/rpg-party/static/media/MaleA01.22b4a6e7.png",
+    "static/media/MaleB01.png": "/rpg-party/static/media/MaleB01.1964f633.png",
+    "static/media/MaleC01.png": "/rpg-party/static/media/MaleC01.b0a7ad75.png",
+    "static/media/MaleD01.png": "/rpg-party/static/media/MaleD01.80920571.png",
+    "static/media/MaleE01.png": "/rpg-party/static/media/MaleE01.fb1527fe.png",
+    "static/media/MaleF01.png": "/rpg-party/static/media/MaleF01.5f5b4512.png",
+    "static/media/MaleG01.png": "/rpg-party/static/media/MaleG01.c4a7579a.png",
+    "static/media/MaleH01.png": "/rpg-party/static/media/MaleH01.eda1579d.png"
+  }
+}
