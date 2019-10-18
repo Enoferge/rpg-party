@@ -1,18 +1,18 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "c84a4c55c8e8be62a6d4170dab0be92e",
+    "revision": "935bfb4d2004dc62b91c1925dc064d67",
     "url": "/rpg-party/index.html"
   },
   {
-    "revision": "88ed3bd703e005e0b208",
-    "url": "/rpg-party/static/css/main.8e9ad639.chunk.css"
+    "revision": "dd290a65fb30d70377b4",
+    "url": "/rpg-party/static/css/main.e6c94ef5.chunk.css"
   },
   {
     "revision": "aac8ecbb14c819fe65f8",
     "url": "/rpg-party/static/js/2.eea72079.chunk.js"
   },
   {
-    "revision": "88ed3bd703e005e0b208",
+    "revision": "dd290a65fb30d70377b4",
     "url": "/rpg-party/static/js/main.4b0afbb7.chunk.js"
   },
   {
